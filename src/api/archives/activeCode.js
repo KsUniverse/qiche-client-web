@@ -48,3 +48,11 @@ export const update = (row) => {
   })
 }
 
+export const generator = () => {
+  return request({
+    url: '/api/blade-activeCode/activeCode/generator',
+    method: 'get'
+  })
+}
+
+
