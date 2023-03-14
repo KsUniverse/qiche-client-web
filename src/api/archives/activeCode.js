@@ -55,4 +55,19 @@ export const generator = () => {
   })
 }
 
+export const clientInformation = () => {
+  return request({
+    url: '/api/blade-activeCode/activeCode/clientInformation',
+    method: 'get'
+  })
+}
 
+export const commitInformation = (data) => {
+  return request({
+    url: '/api/blade-activeCode/activeCode/commitInformation',
+    method: 'post',
+    data: {
+      data: data
+    }
+  })
+}

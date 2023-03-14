@@ -17,7 +17,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
 //默认超时时间
-axios.defaults.timeout = 10000;
+axios.defaults.timeout = 100000;
 //返回其他状态码
 axios.defaults.validateStatus = function (status) {
   return status >= 200 && status <= 500;

@@ -390,7 +390,7 @@
                   label: '密码',
                   prop: 'password',
                   hide: true,
-                  editDisplay: false,
+                  editDisplay: true,
                   viewDisplay: false,
                   rules: [{required: true, validator: validatePass, trigger: 'blur'}]
                 },
@@ -398,7 +398,7 @@
                   label: '确认密码',
                   prop: 'password2',
                   hide: true,
-                  editDisplay: false,
+                  editDisplay: true,
                   viewDisplay: false,
                   rules: [{required: true, validator: validatePass2, trigger: 'blur'}]
                 },

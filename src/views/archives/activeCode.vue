@@ -8,6 +8,9 @@
         <el-button type="danger" size="small" icon="el-icon-delete" plain v-if="permission.activeCode_delete"
           @click="handleDelete">删 除
         </el-button>
+        <el-button type="primary" size="small" icon="el-icon-plus" plain v-if="permission.activeCode_delete"
+          @click="handlerInfomation">软件介绍
+        </el-button>
       </template>
       <template slot="codeForm" slot-scope="scope">
         <div style="display: flex; align-items: center;">
@@ -16,11 +19,20 @@
         </div>
       </template>
     </avue-crud>
+    <el-dialog title="修改客户端软件左下角介绍" :visible.sync="handlerInfomationVisible" append-to-body="">
+      <p>提示: 输入连续字符 `!!!` 可以换行</p>
+      <el-input v-model="clientInformation" placeholder="请输入介绍内容"  type="textarea"  :autosize="{ minRows: 2, maxRows: 8}"></el-input>
+      <div slot="footer">
+        <el-button type="primary" size="small" plain v-if="permission.activeCode_delete"
+          @click="handlerCommitInfomation">提交
+        </el-button>
+      </div>
+    </el-dialog>
   </basic-container>
 </template>
 
 <script>
-import { getList, getDetail, add, update, remove, generator } from "@/api/archives/activeCode";
+import { getList, getDetail, add, update, remove, generator, clientInformation, commitInformation } from "@/api/archives/activeCode";
 import option from "@/const/archives/activeCode";
 import { mapGetters } from "vuex";
 
@@ -37,7 +49,9 @@ export default {
       },
       selectionList: [],
       option: option,
-      data: []
+      data: [],
+      handlerInfomationVisible: false,
+      clientInformation: '',
     };
   },
   computed: {
@@ -172,6 +186,17 @@ export default {
       generator().then(res => {
         console.log(res.data.data)
         this.form.code = res.data.data
+      })
+    },
+    handlerInfomation() {
+      clientInformation().then(res => {
+        this.clientInformation = res.data.data.userExt
+      })
+      this.handlerInfomationVisible = true;
+    },
+    handlerCommitInfomation() {
+      commitInformation(this.clientInformation).then(() => {
+        this.$message.success("提交成功");
       })
     }
   }
