@@ -121,6 +121,7 @@ export default (type) => {
           name: 'originalName',
           url: 'link'
         },
+        limit: 50,
         data: {},
         hide: true,
         display: false

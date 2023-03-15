@@ -6,11 +6,11 @@ let baseUrl = '';
 let codeUrl = `${baseUrl}/code`
 const env = process.env
 if (env.NODE_ENV === 'development') {
-    baseUrl = ``; // 开发环境地址
+    baseUrl = `118.31.61.71`; // 开发环境地址
 } else if (env.NODE_ENV === 'production') {
-    baseUrl = ``; //生产环境地址
+    baseUrl = `118.31.61.71`; //生产环境地址
 } else if (env.NODE_ENV === 'test') {
-    baseUrl = ``; //测试环境地址
+    baseUrl = `118.31.61.71`; //测试环境地址
 }
 export {
     baseUrl,
